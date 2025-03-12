@@ -57,4 +57,4 @@ if st.button("Send"):
         st.session_state.chat_history.append({"role": "user", "text": user_input})
         response = "This is a placeholder response. Your AI model can generate an actual reply."
         st.session_state.chat_history.append({"role": "bot", "text": response})
-        st.experimental_rerun()
+        st.rerun()  # Updated from st.experimental_rerun()
