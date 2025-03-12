@@ -6,23 +6,6 @@ st.set_page_config(page_title="DERM-AI", layout="wide")
 # Custom CSS for chat-like appearance
 st.markdown("""
     <style>
-        .stTextInput>div>div>input {
-            border-radius: 10px;
-            padding: 10px;
-            border: 1px solid #666;
-            background-color: #333;
-            color: white;
-        }
-        .stButton>button {
-            border-radius: 10px;
-            background-color: #1E90FF;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-        }
-        .stButton>button:hover {
-            background-color: #007ACC;
-        }
         .stChatMessage {
             background-color: #444;
             padding: 10px;
@@ -31,6 +14,10 @@ st.markdown("""
         }
         .stChatMessage.user {
             background-color: #1E90FF;
+            color: white;
+        }
+        .stChatMessage.bot {
+            background-color: #222;
             color: white;
         }
     </style>
@@ -50,11 +37,10 @@ if "chat_history" not in st.session_state:
 for message in st.session_state.chat_history:
     st.markdown(f'<div class="stChatMessage {message["role"]}">{message["text"]}</div>', unsafe_allow_html=True)
 
-# User input
-user_input = st.text_input("Ask me anything about skin health...", key="user_input")
-if st.button("Send"):
-    if user_input:
-        st.session_state.chat_history.append({"role": "user", "text": user_input})
-        response = "This is a placeholder response. Your AI model can generate an actual reply."
-        st.session_state.chat_history.append({"role": "bot", "text": response})
-        st.rerun()  # Updated from st.experimental_rerun()
+# User input using chat_input
+user_input = st.chat_input("Ask me anything about skin health...")
+if user_input:
+    st.session_state.chat_history.append({"role": "user", "text": user_input})
+    response = "This is a placeholder response. Your AI model can generate an actual reply."
+    st.session_state.chat_history.append({"role": "bot", "text": response})
+    st.rerun()
