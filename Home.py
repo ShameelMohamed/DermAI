@@ -37,7 +37,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Sidebar
-st.sidebar.title("### DERM-AI")
+st.sidebar.title("DERM-AI")
 uploaded_file = st.sidebar.file_uploader("Upload an Image", type=["webp", "png", "jpeg", "jpg"])
 
 # Chatbot UI
