@@ -1,3 +1,3 @@
 # DermAI
 
-dermai1.streamlit.app
+https://dermai1.streamlit.app
